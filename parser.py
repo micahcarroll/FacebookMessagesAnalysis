@@ -9,7 +9,7 @@ import datetime
 from utils import *
 import pdb
 
-class LeadaParser(object):
+class Parser(object):
 
     max_people_per_convo = 4
 
