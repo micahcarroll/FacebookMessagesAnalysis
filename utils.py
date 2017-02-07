@@ -1,4 +1,5 @@
 import pdb
+import pandas as pd
 
 def update_message_to_friends(count_dict, friends_in_thread, MY_NAME):
         # I'm speaking to everyone in the thread, so update everyone.
@@ -47,4 +48,3 @@ def append_to_df(df, entry, index=None):
 
 def in_top_friends(friends_message_count, name):
     return name in friends_message_count
-temp_df = pd.DataFrame([entry], columns=['date', 'name'])
