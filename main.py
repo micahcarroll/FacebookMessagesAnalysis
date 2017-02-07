@@ -5,9 +5,15 @@ import parser
 from ggplot import *
 import scipy.stats as ss
 import pdb
-
-
 from utils import *
+import setup
+import plotly.plotly as py
+import plotly.tools as tls
+from plotly.graph_objs import *
+
+username, apikey = setup.main()
+py.sign_in(username, apikey)
+
 MY_NAME = "Micah Twyc Carroll" # your name as it appears on Facebook
 max_people_per_convo = 2
 
@@ -39,7 +45,7 @@ for thread in threads:
 
 print("After filtering by max num of people in the conversation, we are considering {} threads".format(len(friends_message_count)))
 
-top_x = 4
+top_x = 10
 sorted_top_friends_to = sorted(friends_message_count.items(), key= lambda x: x[1][0], reverse=True)[0:top_x]
 sorted_top_friends_from = sorted(friends_message_count.items(), key=lambda x: x[1][1], reverse=True)[0:top_x]
 print(sorted_top_friends_to)
@@ -72,3 +78,10 @@ print(ggplot(aes(x='date', y='value', colour="name"), data=my_total_ranked_line)
     scale_x_date(breaks=date_breaks('6 months'), labels='%b %Y') + \
     geom_line(size=3) + \
     ggtitle('Ranking over Time'))
+
+plot = ggplot(aes(x='date', y='value', colour="name", ylim=10), data=my_total_ranked_line) + \
+    scale_x_date(breaks=date_breaks('6 months'), labels='%b %Y') + \
+    geom_line(size=3) + \
+    ggtitle('Ranking over Time')
+fig = plot.draw()
+py.iplot_mpl(fig)
