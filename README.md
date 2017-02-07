@@ -9,7 +9,7 @@ A basic visualization of Facebook Messanger data
 
 ## Visualizations
 
-The visualizations are created with ggplot.
+The visualizations are created with [ggplot](https://github.com/yhat/ggpy).
 
 To see the visualizations of your data, run `main.py`. This can take various minutes, depending on the amount of messages you have.
 
